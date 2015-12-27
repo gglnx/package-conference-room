@@ -19,9 +19,21 @@
         "type": "color",
         "default": [1,1,1,1]
     }, {
+        "title": "Highlight color",
+        "ui_width": 4,
+        "name": "highlight_color",
+        "type": "color",
+        "default": [1,1,1,1]
+    }, {
         "title": "Font",
         "ui_width": 4,
         "name": "font",
+        "type": "font",
+        "default": "silkscreen.ttf"
+    },  {
+        "title": "Font 2",
+        "ui_width": 4,
+        "name": "font2",
         "type": "font",
         "default": "silkscreen.ttf"
     }, {

@@ -363,13 +363,13 @@ local content = switcher(function()
         end;
         draw = function()
             if not current_talk then
-                CONFIG.font:write(400, 180, "Nächste Sendung", 80, CONFIG.foreground_color.rgba())
+                CONFIG.font2:write(400, 180, "Nächste Sendung", 80, CONFIG.foreground_color.rgba())
                 spacer:draw(0, 300, WIDTH, 302, 0.6)
                 CONFIG.font:write(400, 310, "Nope. That's it.", 50, CONFIG.foreground_color.rgba())
             else
                 local delta = current_talk.start_unix - get_now()
                 if delta > 0 then
-                    CONFIG.font:write(400, 180, "Nächste Sendung", 80, CONFIG.foreground_color.rgba())
+                    CONFIG.font2:write(400, 180, "Nächste Sendung", 80, CONFIG.foreground_color.rgba())
                 else
                     CONFIG.font:write(400, 180, "Diese Sendung", 80, CONFIG.foreground_color.rgba())
                 end
