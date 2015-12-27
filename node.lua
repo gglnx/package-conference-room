@@ -52,6 +52,13 @@ function check_next_talk()
         end
     end
 
+    local room_next_all = {}
+    for idx, talk in ipairs(schedule) do
+        if talk.start_unix > now then
+            room_next_all[talk.id] = talk
+        end
+    end
+
     for room, talk in pairs(room_next) do
         talk.slide_lines = wrap(talk.title, 30)
 
@@ -70,11 +77,18 @@ function check_next_talk()
     end
 
     all_talks = {}
-    for room, talk in pairs(room_next) do
-        if current_talk and room ~= current_talk.place then
+    --for room, talk in pairs(room_next) do
+    --    if current_talk and room ~= current_talk.place then
+    --        all_talks[#all_talks + 1] = talk
+    --    end
+    --end
+
+    for id, talk in pairs(room_next_all) do
+        if talk.place ~= current_talk.place then
             all_talks[#all_talks + 1] = talk
         end
     end
+
     table.sort(all_talks, function(a, b) 
         if a.start_unix < b.start_unix then
             return true
