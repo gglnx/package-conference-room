@@ -304,8 +304,6 @@ local content = switcher(function()
                 end
             end
 
-            local y = 300
-
             local function mk_talk(y, talk, is_running)
                 local alpha
                 if is_running then
@@ -316,17 +314,17 @@ local content = switcher(function()
 
                 local wrapped_title = wrap(talk.title, 30)
 
-                return function()
+                return #wrapped_title*62 function()
                     CONFIG.font:write(30, y, "Tag " .. talk.day, 50, CONFIG.foreground_color.rgb_with_a(alpha))
                     CONFIG.font:write(190, y, talk.start_str, 50, CONFIG.foreground_color.rgb_with_a(alpha))
 
                     for idx, line in ipairs(wrapped_title) do
-                        CONFIG.font:write(400, y, line, 50, CONFIG.foreground_color.rgb_with_a(alpha))
-                        y = y - 20 + 20 * idx
+                        CONFIG.font:write(400, y - 62 + 62 * idx, line, 50, CONFIG.foreground_color.rgb_with_a(alpha))
                     end
                 end
             end
 
+            local y = 300
             local time_sep = false
             if #all_talks > 0 then
                 for idx, talk in ipairs(all_talks) do
@@ -341,9 +339,10 @@ local content = switcher(function()
                     --if talk.lines then
                     --    add_content(mk_talkmulti(y, talk, not time_sep))
                     --else
-                    add_content(mk_talk(y, talk, not time_sep))
+                    local height, draw = mk_talk(y, talk, not time_sep)
+                    add_content(draw)
                     --end
-                    y = y + 62
+                    y = y + height
                 end
             else
                 CONFIG.font:write(400, 330, "No other talks.", 50, CONFIG.foreground_color.rgba())
