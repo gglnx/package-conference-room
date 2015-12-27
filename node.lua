@@ -378,19 +378,25 @@ local content = switcher(function()
         prepare = function()
         end;
         draw = function(t)
-            CONFIG.font:write(400, 180, "Room information", 80, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(400, 180, "Weitere Informationen", 80, CONFIG.foreground_color.rgba())
             spacer:draw(0, 280, WIDTH, 282, 0.6)
-            CONFIG.font:write(30, 300, "Audio", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 300, "Dial " .. current_room.dect, 50, CONFIG.foreground_color.rgba())
 
-            CONFIG.font:write(30, 360, "Translation", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 360, "Dial " .. current_room.translation, 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(30, 300, "Hashtag", 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(400, 300, current_room.hashtag, 50, CONFIG.foreground_color.rgba())
 
-            CONFIG.font:write(30, 460, "IRC", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 460, current_room.irc, 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(30, 360, "Stream", 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(400, 360, current_room.stream, 50, CONFIG.foreground_color.rgba())
 
-            CONFIG.font:write(30, 520, "Hashtag", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 520, current_room.hashtag, 50, CONFIG.foreground_color.rgba())
+            --CONFIG.font:write(30, 300, "Audio", 50, CONFIG.foreground_color.rgba())
+            --CONFIG.font:write(400, 300, "Dial " .. current_room.dect, 50, CONFIG.foreground_color.rgba())
+
+            --CONFIG.font:write(30, 360, "Translation", 50, CONFIG.foreground_color.rgba())
+            --CONFIG.font:write(400, 360, "Dial " .. current_room.translation, 50, CONFIG.foreground_color.rgba())
+
+            --CONFIG.font:write(30, 460, "IRC", 50, CONFIG.foreground_color.rgba())
+            --CONFIG.font:write(400, 460, current_room.irc, 50, CONFIG.foreground_color.rgba())
+
+            
         end
     }}
 end)

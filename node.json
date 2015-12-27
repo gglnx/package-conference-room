@@ -132,10 +132,10 @@
             "type": "string",
             "default": ""
         }, {
-            "title": "Translation",
+            "title": "Streaming-URL",
             "ui_width": 3,
-            "name": "translation",
-            "doc_link": true,
+            "name": "stream",
+            "doc_link": false,
             "type": "string",
             "default": ""
         }, {
