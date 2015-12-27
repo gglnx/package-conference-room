@@ -313,8 +313,8 @@ local content = switcher(function()
                 end
 
                 return function()
-                    CONFIG.font:write(30, y, talk.start_str, 50, CONFIG.foreground_color.rgb_with_a(alpha))
-                    CONFIG.font:write(190, y, rooms[talk.place].name_short, 50, CONFIG.foreground_color.rgb_with_a(alpha))
+                    CONFIG.font:write(30, y, "Tag " .. talk.day, 50, CONFIG.foreground_color.rgb_with_a(alpha))
+                    CONFIG.font:write(190, y, talk.start_str, 50, CONFIG.foreground_color.rgb_with_a(alpha))
                     CONFIG.font:write(400, y, talk.title, 50, CONFIG.foreground_color.rgb_with_a(alpha))
                 end
             end
@@ -331,11 +331,11 @@ local content = switcher(function()
                         end
                         time_sep = true
                     end
-                    if talk.lines then
-                        add_content(mk_talkmulti(y, talk, not time_sep))
-                    else
-                        add_content(mk_talk(y, talk, not time_sep))
-                    end
+                    --if talk.lines then
+                    --    add_content(mk_talkmulti(y, talk, not time_sep))
+                    --else
+                    add_content(mk_talk(y, talk, not time_sep))
+                    --end
                     y = y + 62
                 end
             else
