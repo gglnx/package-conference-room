@@ -47,8 +47,8 @@ function check_next_talk()
     local now = get_now()
     local room_next = {}
     for idx, talk in ipairs(schedule) do
-        if talk.start_unix + 25 * 60 > now then 
-            room_next[talk.id] = talk
+        if rooms[talk.place] and not room_next[talk.place] and talk.start_unix + 25 * 60 > now then 
+            room_next[talk.place] = talk
         end
     end
 
@@ -69,14 +69,12 @@ function check_next_talk()
         current_talk = nil
     end
 
-    all_talks = room_next
-    --all_talks = {}
-    --for room, talk in pairs(room_next) do
-    --    if current_talk and room ~= current_talk.place then
-    --        all_talks[#all_talks + 1] = talk
-    --    end
-    --end
-
+    all_talks = {}
+    for room, talk in pairs(room_next) do
+        if current_talk and room ~= current_talk.place then
+            all_talks[#all_talks + 1] = talk
+        end
+    end
     table.sort(all_talks, function(a, b) 
         if a.start_unix < b.start_unix then
             return true
