@@ -331,11 +331,11 @@ local content = switcher(function()
                         end
                         time_sep = true
                     end
-                    if talk.lines then
-                        add_content(mk_talkmulti(y, talk, not time_sep))
-                    else
-                        add_content(mk_talk(y, talk, not time_sep))
-                    end
+                    --if talk.lines then
+                    add_content(mk_talkmulti(y, talk, not time_sep))
+                    --else
+                    --    add_content(mk_talk(y, talk, not time_sep))
+                    --end
                     y = y + 62
                 end
             else
