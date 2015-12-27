@@ -337,7 +337,7 @@ local content = switcher(function()
         end;
         draw = function()
             if not current_talk then
-                CONFIG.font:write(400, 180, "Next talk", 80, CONFIG.foreground_color.rgba())
+                CONFIG.font:write(400, 180, "Nächste Sendung", 80, CONFIG.foreground_color.rgba())
                 spacer:draw(0, 300, WIDTH, 302, 0.6)
                 CONFIG.font:write(400, 310, "Nope. That's it.", 50, CONFIG.foreground_color.rgba())
             else
