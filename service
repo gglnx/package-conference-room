@@ -49,6 +49,7 @@ def main():
 
         with file("schedule.json.new", "wb") as f:
             f.write(json.dumps([dict(
+                id = event['id'],
                 duration = event['duration'],
                 lang = event['lang'],
                 place = event['place'],

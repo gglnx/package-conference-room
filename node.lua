@@ -48,7 +48,7 @@ function check_next_talk()
     local room_next = {}
     for idx, talk in ipairs(schedule) do
         if rooms[talk.place] and not room_next[talk.place] and talk.start_unix + 25 * 60 > now then 
-            room_next[talk.place] = talk
+            room_next[talk.id] = talk
         end
     end
 
