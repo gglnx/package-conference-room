@@ -59,6 +59,7 @@ def main():
                 type = event['type'],
                 start_unix = event['start_unix'],
                 end_unix = event['end_unix'],
+                day = event['day'],
             ) for event in sorted(events, key=itemgetter('start_unix'))], 
                 ensure_ascii=False,
                 separators=(',',':')

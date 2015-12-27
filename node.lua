@@ -293,7 +293,7 @@ local content = switcher(function()
 
                 return function()
                     CONFIG.font:write(30, y, talk.start_str, 50, CONFIG.foreground_color.rgb_with_a(alpha))
-                    CONFIG.font:write(190, y, rooms[talk.place].name_short, 50, CONFIG.foreground_color.rgb_with_a(alpha))
+                    CONFIG.font:write(190, y, "Tag " .. talk.day, 50, CONFIG.foreground_color.rgb_with_a(alpha))
                     CONFIG.font:write(400, y, top_line, 30, CONFIG.foreground_color.rgb_with_a(alpha))
                     CONFIG.font:write(400, y+28, bottom_line, 30, CONFIG.foreground_color.rgb_with_a(alpha*0.6))
 

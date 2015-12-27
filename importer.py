@@ -30,10 +30,10 @@ def get_schedule(url):
             for day in schedule.findall('day'):
                 for room in day.findall('room'):
                     for event in room.findall('event'):
-                        yield event
+                        yield day, event
 
         parsed_events = []
-        for event in all_events():
+        for day, event in all_events():
             start = dateutil.parser.parse(event.find('date').text)
             duration = parse_duration(event.find('duration').text)
             end = start + duration
@@ -51,6 +51,7 @@ def get_schedule(url):
                 duration = int(duration.total_seconds() / 60),
                 title = text_or_empty(event, 'title'),
                 place = text_or_empty(event, 'room'),
+                day = day.attrib["index"],
                 speakers = [
                     unicode(person.text.strip()) 
                     for person in persons
