@@ -410,10 +410,10 @@ local content = switcher(function()
             CONFIG.font:write(30, 300, "Hashtag", 50, CONFIG.foreground_color.rgba())
             CONFIG.font:write(400, 300, current_room.hashtag, 50, CONFIG.foreground_color.rgba())
 
-            local stream = wrap(table.concat(current_room.stream, ", "), 30)
+            local stream_url = wrap(current_room.stream, 30)
             CONFIG.font:write(30, 380, "Stream", 50, CONFIG.foreground_color.rgba())
-            for idx, line in ipairs(stream) do
-                CONFIG.font:write(400, 380 -50 + 50 * idx, line, 50, CONFIG.foreground_color.rgba())
+            for idx, line in ipairs(stream_url) do
+                CONFIG.font:write(400, 380 - 50 + 50 * idx, line, 50, CONFIG.foreground_color.rgba())
             end
 
             CONFIG.font:write(30, 520, "DECT", 50, CONFIG.foreground_color.rgba())
