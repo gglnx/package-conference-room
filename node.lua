@@ -342,10 +342,10 @@ local content = switcher(function()
                     local height, draw = mk_talk(y, talk, not time_sep)
                     add_content(draw)
                     --end
-                    y = y + height
+                    y = y + 20 + height
                 end
             else
-                CONFIG.font:write(400, 330, "No other talks.", 50, CONFIG.foreground_color.rgba())
+                CONFIG.font:write(400, 330, "Keine weiteren Sendungen", 50, CONFIG.foreground_color.rgba())
             end
 
             return content
