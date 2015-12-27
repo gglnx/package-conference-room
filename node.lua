@@ -343,9 +343,9 @@ local content = switcher(function()
             else
                 local delta = current_talk.start_unix - get_now()
                 if delta > 0 then
-                    CONFIG.font:write(400, 180, "Next talk", 80, CONFIG.foreground_color.rgba())
+                    CONFIG.font:write(400, 180, "Nächste Sendung", 80, CONFIG.foreground_color.rgba())
                 else
-                    CONFIG.font:write(400, 180, "This talk", 80, CONFIG.foreground_color.rgba())
+                    CONFIG.font:write(400, 180, "Diese Sendung", 80, CONFIG.foreground_color.rgba())
                 end
                 spacer:draw(0, 280, WIDTH, 282, 0.6)
 
