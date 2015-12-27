@@ -98,6 +98,12 @@ function check_next_talk()
             return a.place < b.place
         end
     end)
+
+    for idx, talk in ipairs(all_talks) do
+        if idx > 3 then
+            all_talks[idx] = nil
+        end
+    end
 end
 
 function wrap(str, limit, indent, indent1)
