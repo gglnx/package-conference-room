@@ -69,12 +69,14 @@ function check_next_talk()
         current_talk = nil
     end
 
-    all_talks = {}
-    for room, talk in pairs(room_next) do
-        if current_talk and room ~= current_talk.place then
-            all_talks[#all_talks + 1] = talk
-        end
-    end
+    all_talks = room_next
+    --all_talks = {}
+    --for room, talk in pairs(room_next) do
+    --    if current_talk and room ~= current_talk.place then
+    --        all_talks[#all_talks + 1] = talk
+    --    end
+    --end
+
     table.sort(all_talks, function(a, b) 
         if a.start_unix < b.start_unix then
             return true
