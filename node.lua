@@ -314,7 +314,7 @@ local content = switcher(function()
 
                 local wrapped_title = wrap(talk.title, 30)
 
-                return #wrapped_title*62 function()
+                return #wrapped_title*62, function()
                     CONFIG.font:write(30, y, "Tag " .. talk.day, 50, CONFIG.foreground_color.rgb_with_a(alpha))
                     CONFIG.font:write(190, y, talk.start_str, 50, CONFIG.foreground_color.rgb_with_a(alpha))
 
