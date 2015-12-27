@@ -315,8 +315,8 @@ local content = switcher(function()
                 local wrapped_title = wrap(talk.title, 30)
 
                 return #wrapped_title*62, function()
-                    CONFIG.font:write(30, y, "Tag " .. talk.day, 50, CONFIG.foreground_color.rgb_with_a(alpha))
-                    CONFIG.font:write(190, y, talk.start_str, 50, CONFIG.foreground_color.rgb_with_a(alpha))
+                    CONFIG.font2:write(30, y, "Tag " .. talk.day, 50, CONFIG.foreground_color.rgb_with_a(alpha))
+                    CONFIG.font2:write(190, y, talk.start_str, 50, CONFIG.foreground_color.rgb_with_a(alpha))
 
                     for idx, line in ipairs(wrapped_title) do
                         CONFIG.font:write(400, y - 62 + 62 * idx, line, 50, CONFIG.foreground_color.rgb_with_a(alpha))
@@ -365,21 +365,21 @@ local content = switcher(function()
             if not current_talk then
                 CONFIG.font2:write(400, 180, "Nächste Sendung", 80, CONFIG.foreground_color.rgba())
                 spacer:draw(0, 300, WIDTH, 302, 0.6)
-                CONFIG.font:write(400, 310, "Nope. That's it.", 50, CONFIG.foreground_color.rgba())
+                CONFIG.font2:write(400, 310, "Nope. That's it.", 50, CONFIG.foreground_color.rgba())
             else
                 local delta = current_talk.start_unix - get_now()
                 if delta > 0 then
                     CONFIG.font2:write(400, 180, "Nächste Sendung", 80, CONFIG.foreground_color.rgba())
                 else
-                    CONFIG.font:write(400, 180, "Diese Sendung", 80, CONFIG.foreground_color.rgba())
+                    CONFIG.font2:write(400, 180, "Diese Sendung", 80, CONFIG.foreground_color.rgba())
                 end
                 spacer:draw(0, 280, WIDTH, 282, 0.6)
 
-                CONFIG.font:write(130, 310, current_talk.start_str, 50, CONFIG.foreground_color.rgba())
+                CONFIG.font2:write(130, 310, current_talk.start_str, 50, CONFIG.foreground_color.rgba())
                 if delta > 180*60 then
-                    CONFIG.font:write(130, 310 + 60, string.format("in %d h", math.floor(delta/3660)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                    CONFIG.font2:write(130, 310 + 60, string.format("in %d h", math.floor(delta/3660)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
                 elseif delta > 0 then
-                    CONFIG.font:write(130, 310 + 60, string.format("in %d min", math.floor(delta/60)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                    CONFIG.font2:write(130, 310 + 60, string.format("in %d min", math.floor(delta/60)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
                 end
                 for idx, line in ipairs(current_talk.slide_lines) do
                     if idx >= 5 then
@@ -395,7 +395,7 @@ local content = switcher(function()
                         break
                     end
 
-                    CONFIG.font:write(400, 490 + 50 * idx, line, 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                    CONFIG.font2:write(400, 490 + 50 * idx, line, 50, CONFIG.foreground_color.rgb_with_a(0.6))
                 end                
             end
         end
