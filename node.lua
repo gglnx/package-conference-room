@@ -410,11 +410,11 @@ local content = switcher(function()
             CONFIG.font:write(30, 300, "Hashtag", 50, CONFIG.foreground_color.rgba())
             CONFIG.font:write(400, 300, current_room.hashtag, 50, CONFIG.foreground_color.rgba())
 
-            CONFIG.font:write(30, 360, "Stream", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 360, current_room.stream, 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(30, 400, "Stream", 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(400, 400, current_room.stream, 50, CONFIG.foreground_color.rgba())
 
-            CONFIG.font:write(30, 360, "DECT", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 360, current_room.dect, 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(30, 500, "DECT", 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(400, 500, current_room.dect, 50, CONFIG.foreground_color.rgba())
 
             --CONFIG.font:write(30, 300, "Audio", 50, CONFIG.foreground_color.rgba())
             --CONFIG.font:write(400, 300, "Dial " .. current_room.dect, 50, CONFIG.foreground_color.rgba())
