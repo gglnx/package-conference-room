@@ -410,14 +410,15 @@ local content = switcher(function()
             CONFIG.font:write(30, 300, "Hashtag", 50, CONFIG.foreground_color.rgba())
             CONFIG.font:write(400, 300, current_room.hashtag, 50, CONFIG.foreground_color.rgba())
 
-            local stream_url = wrap(current_room.stream, 30)
             CONFIG.font:write(30, 380, "Stream", 50, CONFIG.foreground_color.rgba())
-            for idx, line in ipairs(stream_url) do
-                CONFIG.font:write(400, 380 - 50 + 50 * idx, line, 50, CONFIG.foreground_color.rgba())
-            end
+            CONFIG.font:write(400, 380, current_room.stream, 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(400, 430, current_room.stream2, 50, CONFIG.foreground_color.rgba())
 
-            CONFIG.font:write(30, 520, "DECT", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 520, current_room.dect, 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(30, 510, "DECT", 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(400, 510, current_room.dect, 50, CONFIG.foreground_color.rgba())
+
+            CONFIG.font:write(30, 590, "Mail", 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(400, 590, current_room.mail, 50, CONFIG.foreground_color.rgba())
 
             --CONFIG.font:write(30, 300, "Audio", 50, CONFIG.foreground_color.rgba())
             --CONFIG.font:write(400, 300, "Dial " .. current_room.dect, 50, CONFIG.foreground_color.rgba())
