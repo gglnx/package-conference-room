@@ -361,9 +361,16 @@ local content = switcher(function()
                     end
                     CONFIG.font:write(400, 310 - 60 + 60 * idx, line, 50, CONFIG.foreground_color.rgba())
                 end
-                for i, speaker in ipairs(current_talk.speakers) do
-                    CONFIG.font:write(400, 490 + 50 * i, speaker, 50, CONFIG.foreground_color.rgb_with_a(0.6))
-                end
+
+                local speakers = wrap(table.concat(current_talk.speakers, ", "), 30)
+
+                for idx, line in ipairs(speakers) do
+                    if idx >= 5 then
+                        break
+                    end
+
+                    CONFIG.font:write(400, 490 + 50 * idx, line, 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                end                
             end
         end
     }, {
