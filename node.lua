@@ -404,7 +404,7 @@ local content = switcher(function()
         prepare = function()
         end;
         draw = function(t)
-            CONFIG.font:write(400, 180, "Weitere Informationen", 80, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(400, 180, "Meta", 80, CONFIG.foreground_color.rgba())
             spacer:draw(0, 280, WIDTH, 282, 0.6)
 
             CONFIG.font:write(30, 300, "Hashtag", 50, CONFIG.foreground_color.rgba())
@@ -412,6 +412,9 @@ local content = switcher(function()
 
             CONFIG.font:write(30, 360, "Stream", 50, CONFIG.foreground_color.rgba())
             CONFIG.font:write(400, 360, current_room.stream, 50, CONFIG.foreground_color.rgba())
+
+            CONFIG.font:write(30, 360, "DECT", 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(400, 360, current_room.dect, 50, CONFIG.foreground_color.rgba())
 
             --CONFIG.font:write(30, 300, "Audio", 50, CONFIG.foreground_color.rgba())
             --CONFIG.font:write(400, 300, "Dial " .. current_room.dect, 50, CONFIG.foreground_color.rgba())
