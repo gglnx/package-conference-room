@@ -146,10 +146,10 @@
             "type": "string",
             "default": ""
         }, {
-            "title": "IRC",
+            "title": "Other title",
             "ui_width": 3,
-            "name": "irc",
-            "doc_link": true,
+            "name": "othertitle",
+            "doc_link": false,
             "type": "string",
             "default": ""
         }]
