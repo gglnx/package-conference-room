@@ -100,7 +100,7 @@ function check_next_talk()
     end)
 
     for idx, talk in ipairs(all_talks) do
-        if idx > 3 then
+        if idx > 5 then
             all_talks[idx] = nil
         end
     end
