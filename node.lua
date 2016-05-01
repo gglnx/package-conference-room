@@ -217,30 +217,7 @@ function switcher(get_screens)
     end
     
     local function draw()
-        local now = sys.now()
-
-        local percent = ((now - switched) / (switch - switched)) * 3.14129 * 2 - 3.14129
-        progress:use{percent = percent}
-        white:draw(WIDTH-50, HEIGHT-50, WIDTH-10, HEIGHT-10)
-        progress:deactivate()
-
-        if mode == "switch" then
-            local progress = (now - switched) / blend
-            gl.pushMatrix()
-            gl.translate(WIDTH/2, 0)
-            if progress < 0.5 then
-                gl.rotate(180 * progress, 0, 1, 0)
-                gl.translate(-WIDTH/2, 0)
-                old_screen:draw(0, 0, WIDTH, HEIGHT)
-            else
-                gl.rotate(180 + 180 * progress, 0, 1, 0)
-                gl.translate(-WIDTH/2, 0)
-                current_screen:draw(0, 0, WIDTH, HEIGHT)
-            end
-            gl.popMatrix()
-        else 
-            current.draw(current_state)
-        end
+        current.draw(current_state)
     end
     return {
         prepare = prepare;
