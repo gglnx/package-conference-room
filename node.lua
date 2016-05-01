@@ -419,7 +419,10 @@ function node.render()
     content.prepare()
 
     CONFIG.background_color.clear()
-    CONFIG.background.ensure_loaded():draw(0, 0, WIDTH, HEIGHT)
+
+    -- Background video
+    local videoConfig = {["loop"] = true}
+    CONFIG.background.ensure_loaded(videoConfig):draw(0, 0, WIDTH, HEIGHT)
 
     util.draw_correct(CONFIG.logo.ensure_loaded(), 20, 20, 300, 120)
     CONFIG.font:write(400, 20, current_room.name_short, 100, CONFIG.foreground_color.rgba())
