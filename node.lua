@@ -425,7 +425,7 @@ function node.render()
     CONFIG.background.ensure_loaded(videoConfig):draw(0, 0, WIDTH, HEIGHT)
 
     -- Logo
-    util.draw_correct(CONFIG.logo.ensure_loaded(), 70, 10, 820, 120)
+    util.draw_correct(CONFIG.logo.ensure_loaded(), 70, 50, 455 + 70, 70 + 50)
     
     -- Clock
     CONFIG.font:write(850, 20, clock.get(), 100, CONFIG.foreground_color.rgba())
