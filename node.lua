@@ -281,18 +281,16 @@ local content = switcher(function()
             CONFIG.font2:write(400, 180, "Meta", 80, CONFIG.foreground_color.rgba())
             spacer:draw(0, 280, WIDTH, 282, 0.6)
 
-            CONFIG.font:write(30, 300, "Hashtag", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 300, current_room.hashtag, 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(70, 300, "Kopfhörer auf Kanal A schalten!", 50, CONFIG.foreground_color.rgba())
 
-            CONFIG.font:write(30, 380, "Stream", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 380, current_room.stream, 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 430, current_room.stream2, 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(70, 430, "Twitter", 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(470, 430, "@sendezentrum", 50, CONFIG.foreground_color.rgba())
 
-            CONFIG.font:write(30, 510, "DECT", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 510, current_room.dect, 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(70, 510, "Hashtag", 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(470, 510, "#rpTENsz", 50, CONFIG.foreground_color.rgba())
 
-            CONFIG.font:write(30, 590, "Mail", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(400, 590, current_room.mail, 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(70, 590, "Mail", 50, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(470, 590, "team@das-sendezenturm.de", 50, CONFIG.foreground_color.rgba())
 
             --CONFIG.font:write(30, 300, "Audio", 50, CONFIG.foreground_color.rgba())
             --CONFIG.font:write(400, 300, "Dial " .. current_room.dect, 50, CONFIG.foreground_color.rgba())
