@@ -433,5 +433,9 @@ function node.render()
     local fov = math.atan2(HEIGHT, WIDTH*2) * 360 / math.pi
     gl.perspective(fov, WIDTH/2, HEIGHT/2, -WIDTH,
                         WIDTH/2, HEIGHT/2, 0)
+
     content.draw()
+
+    -- Loop overlay
+    CONFIG.ovelay.ensure_loaded(videoConfig):draw(0, 0, WIDTH, HEIGHT)
 end

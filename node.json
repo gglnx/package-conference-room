@@ -44,6 +44,13 @@
         "valid": ["image", "video", "child"],
         "default": "empty.png"
     }, {
+        "title": "Loop Overlay",
+        "ui_width": 4,
+        "name": "overlay",
+        "type": "resource",
+        "valid": ["image", "video", "child"],
+        "default": ""
+    }, {
         "title": "Logo",
         "ui_width": 4,
         "name": "logo",
