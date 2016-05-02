@@ -218,6 +218,11 @@ function switcher(get_screens)
     
     local function draw()
         current.draw(current_state)
+
+        -- Loop overlay
+        if CONFIG.overlay then
+            CONFIG.overlay.ensure_loaded(videoConfig):draw(0, 0, WIDTH, HEIGHT)
+        end
     end
     return {
         prepare = prepare;
@@ -327,7 +332,4 @@ function node.render()
                         WIDTH/2, HEIGHT/2, 0)
 
     content.draw()
-
-    -- Loop overlay
-    CONFIG.overlay.ensure_loaded(videoConfig):draw(0, 0, WIDTH, HEIGHT)
 end
