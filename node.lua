@@ -329,5 +329,5 @@ function node.render()
     content.draw()
 
     -- Loop overlay
-    CONFIG.ovelay.ensure_loaded(videoConfig):draw(0, 0, WIDTH, HEIGHT)
+    CONFIG.overlay.ensure_loaded(videoConfig):draw(0, 0, WIDTH, HEIGHT)
 end
