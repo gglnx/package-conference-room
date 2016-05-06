@@ -273,7 +273,7 @@ local content = switcher(function()
             local current_room_offset = math.floor(since / CONFIG.current_room)
             local current_room_config
             local i = 0
-            for room, room_config in pairs(rooms) do
+            for room, room_config in ipairs(rooms) do
                 if current_room_offset == i then
                     current_room_config = room_config
                     break
@@ -286,7 +286,7 @@ local content = switcher(function()
             spacer:draw(0, 320, WIDTH, 322, 0.6)
             
             CONFIG.font2:write(550, 390, since, 60, CONFIG.foreground_color.rgba())
-            CONFIG.font2:write(550, 490, current_zoom_offset, 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 490, current_room_offset, 60, CONFIG.foreground_color.rgba())
         end
     }, {
         time = CONFIG.current_room,
