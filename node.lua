@@ -288,6 +288,7 @@ local content = switcher(function()
             
             CONFIG.font2:write(550, 390, since, 60, CONFIG.foreground_color.rgba())
             CONFIG.font2:write(550, 490, current_room_offset, 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 590, tonumber(CONFIG.current_room) * room_count, 60, CONFIG.foreground_color.rgba())
         end
     }, {
         time = CONFIG.current_room,
