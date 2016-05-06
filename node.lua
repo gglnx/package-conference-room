@@ -12,6 +12,7 @@ util.file_watch("schedule.json", function(content)
     schedule = json.decode(content)
 end)
 
+local room_count = 0
 local rooms
 local spacer = white
 
@@ -23,6 +24,7 @@ node.event("config_update", function(config)
             current_room = room
         end
         rooms[room.name] = room
+        room_count = room_count + 1
     end
     spacer = resource.create_colored_texture(CONFIG.foreground_color.rgba())
 end)
@@ -265,7 +267,7 @@ local content = switcher(function()
             CONFIG.font:write(70, 180, string.upper("Mosaik"), 90, CONFIG.foreground_color.rgba())
             spacer:draw(0, 320, WIDTH, 322, 0.6)
             
-            CONFIG.font2:write(550, 390, table.getn(rooms), 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 390, room_count, 60, CONFIG.foreground_color.rgba())
             CONFIG.font2:write(550, 490, CONFIG.current_room, 60, CONFIG.foreground_color.rgba())
             CONFIG.font2:write(550, 590, start_time, 60, CONFIG.foreground_color.rgba())
             CONFIG.font2:write(550, 690, sys.now(), 60, CONFIG.foreground_color.rgba())
