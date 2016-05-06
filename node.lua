@@ -5,11 +5,6 @@ sys.set_flag("slow_gc")
 local json = require "json"
 local schedule
 local current_room
-
-util.resource_loader{
-    "progress.frag",
-}
-
 local white = resource.create_colored_texture(1,1,1)
 
 util.file_watch("schedule.json", function(content)
@@ -358,10 +353,6 @@ function node.render()
     
     -- Clock
     CONFIG.font2:write(1920 - 180 - 70, 60, clock.get(), 60, CONFIG.foreground_color.rgba())
-
-    local fov = math.atan2(HEIGHT, WIDTH*2) * 360 / math.pi
-    gl.perspective(fov, WIDTH/2, HEIGHT/2, -WIDTH,
-                        WIDTH/2, HEIGHT/2, 0)
 
     content.draw()
 end
