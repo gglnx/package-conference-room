@@ -256,81 +256,30 @@ local content = switcher(function()
             CONFIG.font2:write(550, 790, "team@das-sendezentrum.de", 60, CONFIG.foreground_color.rgba())
         end
     }, {
+        time = CONFIG.current_room * table.getn(rooms),
+        prepare = function()
+            return sys.now()
+        end;
+        draw = function(start_time)
+            -- HEADER
+            CONFIG.font:write(70, 180, string.upper("Mosaik"), 90, CONFIG.foreground_color.rgba())
+            spacer:draw(0, 320, WIDTH, 322, 0.6)
+            
+            CONFIG.font2:write(550, 390, start_time, 60, CONFIG.foreground_color.rgba())
+        end
+    }, {
         time = CONFIG.current_room,
         prepare = function()
         end;
         draw = function()
-            if not current_talk then
-                -- HEADER
-                CONFIG.font:write(70, 180, string.upper("SUBSCRIBE 8"), 90, CONFIG.foreground_color.rgba())
-                spacer:draw(0, 320, WIDTH, 322, 0.6)
+            -- HEADER
+            CONFIG.font:write(70, 180, string.upper("SUBSCRIBE 8"), 90, CONFIG.foreground_color.rgba())
+            spacer:draw(0, 320, WIDTH, 322, 0.6)
 
-                -- MESSAGE
-                CONFIG.font2:write(70, 390, "14. – 16. Oktober 2016 in München", 80, CONFIG.foreground_color.rgba())
-                CONFIG.font2:write(70, 510, "Tickets bald unter subscribe.de", 80, CONFIG.foreground_color.rgba())
-                CONFIG.font2:write(70, 630, "#sub8", 80, CONFIG.foreground_color.rgba())
-            else
-                local delta = current_talk.start_unix - get_now()
-                if delta > 0 then
-                    CONFIG.font2:write(400, 180, "Nächste Sendung", 80, CONFIG.foreground_color.rgba())
-                else
-                    CONFIG.font2:write(400, 180, "Diese Sendung", 80, CONFIG.foreground_color.rgba())
-                end
-                spacer:draw(0, 280, WIDTH, 282, 0.6)
-
-                CONFIG.font2:write(130, 310, current_talk.start_str, 50, CONFIG.foreground_color.rgba())
-                if delta > 180*60 then
-                    CONFIG.font2:write(130, 310 + 60, string.format("in %d h", math.floor(delta/3660)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
-                elseif delta > 0 then
-                    CONFIG.font2:write(130, 310 + 60, string.format("in %d min", math.floor(delta/60)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
-                end
-                for idx, line in ipairs(current_talk.slide_lines) do
-                    if idx >= 5 then
-                        break
-                    end
-                    CONFIG.font:write(400, 310 - 60 + 60 * idx, line, 50, CONFIG.foreground_color.rgba())
-                end
-
-                local speakers = wrap(table.concat(current_talk.speakers, ", "), 30)
-
-                for idx, line in ipairs(speakers) do
-                    if idx >= 5 then
-                        break
-                    end
-
-                    CONFIG.font2:write(400, 490 + 50 * idx, line, 50, CONFIG.foreground_color.rgb_with_a(0.6))
-                end                
-            end
-        end
-    }, {
-        time = CONFIG.room_info,
-        prepare = function()
-        end;
-        draw = function(t)
-            CONFIG.font2:write(400, 180, "Meta", 80, CONFIG.foreground_color.rgba())
-            spacer:draw(0, 280, WIDTH, 282, 0.6)
-
-            CONFIG.font:write(70, 300, "Kopfhörer auf Kanal A schalten!", 50, CONFIG.foreground_color.rgba())
-
-            CONFIG.font:write(70, 430, "Twitter", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(470, 430, "@sendezentrum", 50, CONFIG.foreground_color.rgba())
-
-            CONFIG.font:write(70, 510, "Hashtag", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(470, 510, "#rpTENsz", 50, CONFIG.foreground_color.rgba())
-
-            CONFIG.font:write(70, 590, "Mail", 50, CONFIG.foreground_color.rgba())
-            CONFIG.font:write(470, 590, "team@das-sendezenturm.de", 50, CONFIG.foreground_color.rgba())
-
-            --CONFIG.font:write(30, 300, "Audio", 50, CONFIG.foreground_color.rgba())
-            --CONFIG.font:write(400, 300, "Dial " .. current_room.dect, 50, CONFIG.foreground_color.rgba())
-
-            --CONFIG.font:write(30, 360, "Translation", 50, CONFIG.foreground_color.rgba())
-            --CONFIG.font:write(400, 360, "Dial " .. current_room.translation, 50, CONFIG.foreground_color.rgba())
-
-            --CONFIG.font:write(30, 460, "IRC", 50, CONFIG.foreground_color.rgba())
-            --CONFIG.font:write(400, 460, current_room.irc, 50, CONFIG.foreground_color.rgba())
-
-            
+            -- MESSAGE
+            CONFIG.font2:write(70, 390, "14. – 16. Oktober 2016 in München", 80, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(70, 510, "Tickets bald unter subscribe.de", 80, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(70, 630, "#sub8", 80, CONFIG.foreground_color.rgba())
         end
     }}
 end)
