@@ -232,6 +232,14 @@ end
 
 local content = switcher(function() 
     return {{
+        prepare = function()
+        end;
+        
+        draw = function(t)
+            CONFIG.font:write(70, 180, string.upper("Herzlich Willkommen"), 70, CONFIG.foreground_color.rgba())
+            spacer:draw(0, 280, WIDTH, 282, 0.6)
+        end
+    }, {
         time = CONFIG.current_room,
         prepare = function()
         end;
