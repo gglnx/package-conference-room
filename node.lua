@@ -233,9 +233,9 @@ end
 local content = switcher(function() 
     return {{
         prepare = function()
-        end;
+        end
         
-        draw = function(t)
+        draw = function()
             CONFIG.font:write(70, 180, string.upper("Herzlich Willkommen"), 70, CONFIG.foreground_color.rgba())
             spacer:draw(0, 280, WIDTH, 282, 0.6)
         end
