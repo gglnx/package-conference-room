@@ -256,7 +256,7 @@ local content = switcher(function()
             CONFIG.font2:write(550, 790, "team@das-sendezentrum.de", 60, CONFIG.foreground_color.rgba())
         end
     }, {
-        time = CONFIG.current_room * table.getn(rooms),
+        time = CONFIG.current_room,
         prepare = function()
             return sys.now()
         end;
@@ -265,7 +265,10 @@ local content = switcher(function()
             CONFIG.font:write(70, 180, string.upper("Mosaik"), 90, CONFIG.foreground_color.rgba())
             spacer:draw(0, 320, WIDTH, 322, 0.6)
             
-            CONFIG.font2:write(550, 390, start_time, 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 390, table.getn(rooms), 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 490, CONFIG.current_room, 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 590, start_time, 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 690, sys.now(), 60, CONFIG.foreground_color.rgba())
         end
     }, {
         time = CONFIG.current_room,
