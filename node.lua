@@ -171,7 +171,7 @@ function switcher(get_screens)
     local switch = sys.now()
     local switched = sys.now()
 
-    local blend = 0.8
+    local blend = 0
     local mode = "switch"
 
     local old_screen
