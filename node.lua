@@ -232,11 +232,29 @@ end
 
 local content = switcher(function() 
     return {{
+        time = CONFIG.current_room,
         prepare = function()
         end;
         draw = function()
+            -- HEADER
             CONFIG.font:write(70, 180, string.upper("Herzlich Willkommen"), 70, CONFIG.foreground_color.rgba())
             spacer:draw(0, 280, WIDTH, 282, 0.6)
+
+            -- HASHTAG
+            CONFIG.font:write(70, 340, string.upper("Hashtag"), 50, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(470, 340, "#sub7", 50, CONFIG.foreground_color.rgba())
+
+            -- TWITTER
+            CONFIG.font:write(70, 400, string.upper("Twitter"), 50, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(470, 400, "@subscribe_de", 50, CONFIG.foreground_color.rgba())
+
+            -- PROGRAMME
+            CONFIG.font:write(70, 460, string.upper("Fahrplan"), 50, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(470, 460, "fahrplan.subscribe.de", 50, CONFIG.foreground_color.rgba())
+
+            -- MAIL
+            CONFIG.font:write(70, 520, string.upper("Mail"), 50, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(470, 520, "team@das-sendezentrum.de", 50, CONFIG.foreground_color.rgba())
         end
     }, {
         time = CONFIG.current_room,
