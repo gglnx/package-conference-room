@@ -273,7 +273,7 @@ local content = switcher(function()
             local current_room_offset = math.floor(since / CONFIG.current_room)
             local current_room_config
             local i = 0
-            for room, room_config in ipairs(rooms) do
+            for room, room_config in pairs(rooms) do
                 if current_room_offset == i then
                     current_room_config = room_config
                     break
