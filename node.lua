@@ -352,7 +352,7 @@ function node.render()
     util.draw_correct(CONFIG.logo.ensure_loaded(), 70, 50, 455 + 70, 70 + 50)
     
     -- Clock
-    CONFIG.font2:write(1920 - 200 - 70, 60, clock.get(), 70, CONFIG.foreground_color.rgba())
+    CONFIG.font2:write(1920 - 180 - 70, 60, clock.get(), 60, CONFIG.foreground_color.rgba())
 
     local fov = math.atan2(HEIGHT, WIDTH*2) * 360 / math.pi
     gl.perspective(fov, WIDTH/2, HEIGHT/2, -WIDTH,
