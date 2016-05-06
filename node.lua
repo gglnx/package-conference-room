@@ -264,7 +264,7 @@ local content = switcher(function()
             CONFIG.font2:write(550, 790, "team@das-sendezentrum.de", 60, CONFIG.foreground_color.rgba())
         end
     }, {
-        time = CONFIG.current_room * 3,
+        time = tonumber(CONFIG.current_room) * room_count,
         prepare = function()
             return sys.now()
         end;
