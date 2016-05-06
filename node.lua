@@ -271,7 +271,7 @@ local content = switcher(function()
         draw = function(start_time)
             -- GET CURRENT ROOM BASED ON TIME
             local since = sys.now() - start_time
-            local per_room = CONFIG.room_info / room_count
+            local per_room = 15 / room_count
             local current_room_offset = math.floor(since / per_room)
             local current_room_config
             local i = 0
