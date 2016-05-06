@@ -269,7 +269,7 @@ local content = switcher(function()
         end;
         draw = function(start_time)
             local since = sys.now() - start_time
-            local current_zoom_offset = round(since / CONFIG.current_room, 0)
+            local current_zoom_offset = math.floor(since / CONFIG.current_room)
 
             -- HEADER
             CONFIG.font:write(70, 180, string.upper("Mosaik"), 90, CONFIG.foreground_color.rgba())
