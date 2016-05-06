@@ -266,9 +266,14 @@ local content = switcher(function()
         end;
         draw = function()
             if not current_talk then
-                CONFIG.font2:write(400, 180, "Nächste Sendung", 80, CONFIG.foreground_color.rgba())
-                spacer:draw(0, 300, WIDTH, 302, 0.6)
-                CONFIG.font2:write(400, 310, "Nope. That's it.", 50, CONFIG.foreground_color.rgba())
+                -- HEADER
+                CONFIG.font:write(70, 180, string.upper("Jetzt"), 90, CONFIG.foreground_color.rgba())
+                spacer:draw(0, 320, WIDTH, 322, 0.6)
+
+                -- MESSAGE
+                CONFIG.font2:write(70, 390, "SUBSCRIBE 8: 14.-16.10., München", 60, CONFIG.foreground_color.rgba())
+                CONFIG.font2:write(70, 490, "Tickets unter subscribe.de", 60, CONFIG.foreground_color.rgba())
+                CONFIG.font2:write(70, 590, "#sub8", 60, CONFIG.foreground_color.rgba())
             else
                 local delta = current_talk.start_unix - get_now()
                 if delta > 0 then
