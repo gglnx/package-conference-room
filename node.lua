@@ -264,14 +264,14 @@ local content = switcher(function()
             CONFIG.font2:write(550, 790, "team@das-sendezentrum.de", 60, CONFIG.foreground_color.rgba())
         end
     }, {
-        time = CONFIG.room_info,
+        time = CONFIG.current_room,
         prepare = function()
             return sys.now()
         end;
         draw = function(start_time)
             -- GET CURRENT ROOM BASED ON TIME
             local since = sys.now() - start_time
-            local per_room = 15 / room_count
+            local per_room = CONFIG.room_info / room_count
             local current_room_offset = math.floor(since / per_room)
             local current_room_config
             local i = 0
