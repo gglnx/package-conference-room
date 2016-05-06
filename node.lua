@@ -258,19 +258,20 @@ local content = switcher(function()
             CONFIG.font2:write(550, 790, "team@das-sendezentrum.de", 60, CONFIG.foreground_color.rgba())
         end
     }, {
-        time = CONFIG.current_room,
+        time = CONFIG.current_room * room_count,
         prepare = function()
             return sys.now()
         end;
         draw = function(start_time)
+            local since = sys.now() - start_time
+            local current_zoom_offset = CONFIG.current_room / since
+
             -- HEADER
             CONFIG.font:write(70, 180, string.upper("Mosaik"), 90, CONFIG.foreground_color.rgba())
             spacer:draw(0, 320, WIDTH, 322, 0.6)
             
-            CONFIG.font2:write(550, 390, room_count, 60, CONFIG.foreground_color.rgba())
-            CONFIG.font2:write(550, 490, CONFIG.current_room, 60, CONFIG.foreground_color.rgba())
-            CONFIG.font2:write(550, 590, start_time, 60, CONFIG.foreground_color.rgba())
-            CONFIG.font2:write(550, 690, sys.now(), 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 390, since, 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 490, current_zoom_offset, 60, CONFIG.foreground_color.rgba())
         end
     }, {
         time = CONFIG.current_room,
