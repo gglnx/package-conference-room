@@ -36,6 +36,11 @@ local current_talk
 local all_talks = {}
 local day = 0
 
+function round(num, idp)
+    local mult = 10^(idp or 0)
+    return math.floor(num * mult + 0.5) / mult
+end
+
 function get_now()
     return base_time + sys.now()
 end
@@ -264,7 +269,7 @@ local content = switcher(function()
         end;
         draw = function(start_time)
             local since = sys.now() - start_time
-            local current_zoom_offset = CONFIG.current_room / since
+            local current_zoom_offset = round(since / CONFIG.current_room, 0)
 
             -- HEADER
             CONFIG.font:write(70, 180, string.upper("Mosaik"), 90, CONFIG.foreground_color.rgba())
