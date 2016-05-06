@@ -238,27 +238,27 @@ local content = switcher(function()
         draw = function()
             -- HEADER
             CONFIG.font:write(70, 180, string.upper("Herzlich Willkommen"), 90, CONFIG.foreground_color.rgba())
-            spacer:draw(0, 300, WIDTH, 302, 0.6)
+            spacer:draw(0, 320, WIDTH, 322, 0.6)
 
             -- HASHTAG
-            CONFIG.font:write(70, 350, string.upper("Hashtag"), 60, CONFIG.foreground_color.rgba())
-            CONFIG.font2:write(500, 350, "#sub7", 60, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(70, 370, string.upper("Hashtag"), 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 370, "#sub7", 60, CONFIG.foreground_color.rgba())
 
             -- TWITTER
-            CONFIG.font:write(70, 450, string.upper("Twitter"), 60, CONFIG.foreground_color.rgba())
-            CONFIG.font2:write(500, 450, "@subscribe_de", 60, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(70, 470, string.upper("Twitter"), 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 470, "@subscribe_de", 60, CONFIG.foreground_color.rgba())
 
             -- PROGRAMME
-            CONFIG.font:write(70, 550, string.upper("Fahrplan"), 60, CONFIG.foreground_color.rgba())
-            CONFIG.font2:write(500, 550, "fahrplan.subscribe.de", 60, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(70, 570, string.upper("Fahrplan"), 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 570, "fahrplan.subscribe.de", 60, CONFIG.foreground_color.rgba())
 
             -- PROGRAMME
-            CONFIG.font:write(70, 650, string.upper("Livestream"), 60, CONFIG.foreground_color.rgba())
-            CONFIG.font2:write(500, 650, "livestream.subscribe.de", 60, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(70, 670, string.upper("Livestream"), 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 670, "livestream.subscribe.de", 60, CONFIG.foreground_color.rgba())
 
             -- MAIL
-            CONFIG.font:write(70, 750, string.upper("Mail"), 60, CONFIG.foreground_color.rgba())
-            CONFIG.font2:write(500, 750, "team@das-sendezentrum.de", 60, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(70, 770, string.upper("Mail"), 60, CONFIG.foreground_color.rgba())
+            CONFIG.font2:write(550, 770, "team@das-sendezentrum.de", 60, CONFIG.foreground_color.rgba())
         end
     }, {
         time = CONFIG.current_room,
