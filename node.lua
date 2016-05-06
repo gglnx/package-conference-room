@@ -268,11 +268,21 @@ local content = switcher(function()
             return sys.now()
         end;
         draw = function(start_time)
+            -- GET CURRENT ROOM BASED ON TIME
             local since = sys.now() - start_time
-            local current_zoom_offset = math.floor(since / CONFIG.current_room)
+            local current_room_offset = math.floor(since / CONFIG.current_room)
+            local current_room_config
+            local i = 0
+            for room, room_config in pairs(rooms) do
+                if current_room_offset == i then
+                    current_room_config = room_config
+                    break
+                end
+                i = i + 1
+            end
 
             -- HEADER
-            CONFIG.font:write(70, 180, string.upper("Mosaik"), 90, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(70, 180, string.upper(current_room_config.name), 90, CONFIG.foreground_color.rgba())
             spacer:draw(0, 320, WIDTH, 322, 0.6)
             
             CONFIG.font2:write(550, 390, since, 60, CONFIG.foreground_color.rgba())
