@@ -18,6 +18,7 @@ local spacer = white
 
 node.event("config_update", function(config)
     rooms = {}
+    room_count = 0
     for idx, room in ipairs(config.rooms) do
         if room.serial == sys.get_env("SERIAL") then
             print("found my room")
@@ -263,7 +264,7 @@ local content = switcher(function()
             CONFIG.font2:write(550, 790, "team@das-sendezentrum.de", 60, CONFIG.foreground_color.rgba())
         end
     }, {
-        time = CONFIG.current_room,
+        time = CONFIG.current_room * room_count,
         prepare = function()
             return sys.now()
         end;
