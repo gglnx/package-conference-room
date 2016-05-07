@@ -282,17 +282,17 @@ local content = switcher(function()
                     CONFIG.font:write(70, 390, string.upper("Jetzt"), 60, CONFIG.foreground_color.rgba())
                 end
 
-                CONFIG.font2:write(130, 490, current_talk.start_str, 50, CONFIG.foreground_color.rgba())
+                CONFIG.font2:write(70, 490, current_talk.start_str, 50, CONFIG.foreground_color.rgba())
                 if delta > 180*60 then
-                    CONFIG.font2:write(130, 490 + 60, string.format("in %d h", math.floor(delta/3660)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                    CONFIG.font2:write(70, 490 + 60, string.format("in %d h", math.floor(delta/3660)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
                 elseif delta > 0 then
-                    CONFIG.font2:write(130, 490 + 60, string.format("in %d min", math.floor(delta/60)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                    CONFIG.font2:write(70, 490 + 60, string.format("in %d min", math.floor(delta/60)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
                 end
                 for idx, line in ipairs(current_talk.slide_lines) do
                     if idx >= 5 then
                         break
                     end
-                    CONFIG.font:write(400, 490 - 60 + 60 * idx, line, 50, CONFIG.foreground_color.rgba())
+                    CONFIG.font:write(550, 490 - 60 + 60 * idx, line, 50, CONFIG.foreground_color.rgba())
                 end
 
                 local speakers = wrap(table.concat(current_talk.speakers, ", "), 30)
@@ -302,7 +302,7 @@ local content = switcher(function()
                         break
                     end
 
-                    CONFIG.font2:write(400, 590 + 50 * idx, line, 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                    CONFIG.font2:write(550, 590 + 50 * idx, line, 50, CONFIG.foreground_color.rgb_with_a(0.6))
                 end                
             end
         end
