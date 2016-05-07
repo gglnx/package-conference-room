@@ -266,30 +266,45 @@ local content = switcher(function()
     }, {
         time = CONFIG.current_room,
         prepare = function()
-            return sys.now()
         end;
-        draw = function(start_time)
-            -- GET CURRENT ROOM BASED ON TIME
-            local since = sys.now() - start_time
-            local per_room = CONFIG.room_info / room_count
-            local current_room_offset = math.floor(since / per_room)
-            local current_room_config
-            local i = 0
-            for room, room_config in pairs(rooms) do
-                if current_room_offset == i then
-                    current_room_config = room_config
-                    break
-                end
-                i = i + 1
-            end
-
+        draw = function()
             -- HEADER
-            CONFIG.font:write(70, 180, string.upper(current_room_config.name), 90, CONFIG.foreground_color.rgba())
+            CONFIG.font:write(70, 180, string.upper('Mosaik'), 90, CONFIG.foreground_color.rgba())
             spacer:draw(0, 320, WIDTH, 322, 0.6)
             
-            CONFIG.font2:write(550, 390, since, 60, CONFIG.foreground_color.rgba())
-            CONFIG.font2:write(550, 490, current_room_offset, 60, CONFIG.foreground_color.rgba())
-            CONFIG.font2:write(550, 590, tonumber(CONFIG.current_room) * room_count, 60, CONFIG.foreground_color.rgba())
+            if not current_talk then
+                CONFIG.font2:write(70, 390, string.upper("Kein Programm mehr."), 60, CONFIG.foreground_color.rgba())
+            else
+                local delta = current_talk.start_unix - get_now()
+                if delta > 0 then
+                    CONFIG.font:write(70, 390, string.upper("Gleich"), 60, CONFIG.foreground_color.rgba())
+                else
+                    CONFIG.font:write(70, 390, string.upper("Jetzt"), 60, CONFIG.foreground_color.rgba())
+                end
+
+                CONFIG.font2:write(130, 490, current_talk.start_str, 50, CONFIG.foreground_color.rgba())
+                if delta > 180*60 then
+                    CONFIG.font2:write(130, 490 + 60, string.format("in %d h", math.floor(delta/3660)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                elseif delta > 0 then
+                    CONFIG.font2:write(130, 490 + 60, string.format("in %d min", math.floor(delta/60)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                end
+                for idx, line in ipairs(current_talk.slide_lines) do
+                    if idx >= 5 then
+                        break
+                    end
+                    CONFIG.font:write(400, 490 - 60 + 60 * idx, line, 50, CONFIG.foreground_color.rgba())
+                end
+
+                local speakers = wrap(table.concat(current_talk.speakers, ", "), 30)
+
+                for idx, line in ipairs(speakers) do
+                    if idx >= 5 then
+                        break
+                    end
+
+                    CONFIG.font2:write(400, 590 + 50 * idx, line, 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                end                
+            end
         end
     }, {
         time = CONFIG.current_room,
