@@ -5,6 +5,8 @@ sys.set_flag("slow_gc")
 local json = require "json"
 local schedule
 local current_room
+local current_room_syn
+local current_room_aba
 local white = resource.create_colored_texture(1,1,1)
 
 util.file_watch("schedule.json", function(content)
@@ -73,10 +75,22 @@ function check_next_talk()
         end
     end
 
-    if room_next[current_room.name] then
-        current_talk = room_next[current_room.name]
+    if room_next['MOSAIK'] then
+        current_talk = room_next['MOSAIK']
     else
         current_talk = nil
+    end
+
+    if room_next['SYNKOPE'] then
+        current_talk_syn = room_next['SYNKOPE']
+    else
+        current_talk_syn = nil
+    end
+
+    if room_next['ABAKUS'] then
+        current_talk_aba = room_next['ABAKUS']
+    else
+        current_talk_aba = nil
     end
 
     all_talks = {}
@@ -296,6 +310,92 @@ local content = switcher(function()
                 end
 
                 local speakers = wrap(table.concat(current_talk.speakers, ", "), 30)
+
+                for idx, line in ipairs(speakers) do
+                    if idx >= 5 then
+                        break
+                    end
+
+                    CONFIG.font2:write(550, 590 + 50 * idx, line, 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                end                
+            end
+        end
+    }, , {
+        time = CONFIG.current_room,
+        prepare = function()
+        end;
+        draw = function()
+            -- HEADER
+            CONFIG.font:write(70, 180, string.upper('SYNKOPE'), 90, CONFIG.foreground_color.rgba())
+            spacer:draw(0, 320, WIDTH, 322, 0.6)
+            
+            if not current_talk_syn then
+                CONFIG.font2:write(70, 390, string.upper("Kein Programm mehr."), 60, CONFIG.foreground_color.rgba())
+            else
+                local delta = current_talk_syn.start_unix - get_now()
+                if delta > 0 then
+                    CONFIG.font:write(70, 390, string.upper("Gleich"), 60, CONFIG.foreground_color.rgba())
+                else
+                    CONFIG.font:write(70, 390, string.upper("Jetzt"), 60, CONFIG.foreground_color.rgba())
+                end
+
+                CONFIG.font2:write(70, 490, current_talk_syn.start_str, 50, CONFIG.foreground_color.rgba())
+                if delta > 180*60 then
+                    CONFIG.font2:write(70, 490 + 60, string.format("in %d h", math.floor(delta/3660)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                elseif delta > 0 then
+                    CONFIG.font2:write(70, 490 + 60, string.format("in %d min", math.floor(delta/60)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                end
+                for idx, line in ipairs(current_talk_syn.slide_lines) do
+                    if idx >= 5 then
+                        break
+                    end
+                    CONFIG.font:write(550, 490 - 60 + 60 * idx, line, 50, CONFIG.foreground_color.rgba())
+                end
+
+                local speakers = wrap(table.concat(current_talk_syn.speakers, ", "), 30)
+
+                for idx, line in ipairs(speakers) do
+                    if idx >= 5 then
+                        break
+                    end
+
+                    CONFIG.font2:write(550, 590 + 50 * idx, line, 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                end                
+            end
+        end
+    }, , {
+        time = CONFIG.current_room,
+        prepare = function()
+        end;
+        draw = function()
+            -- HEADER
+            CONFIG.font:write(70, 180, string.upper('ABAKUS'), 90, CONFIG.foreground_color.rgba())
+            spacer:draw(0, 320, WIDTH, 322, 0.6)
+            
+            if not current_talk_aba then
+                CONFIG.font2:write(70, 390, string.upper("Kein Programm mehr."), 60, CONFIG.foreground_color.rgba())
+            else
+                local delta = current_talk_aba.start_unix - get_now()
+                if delta > 0 then
+                    CONFIG.font:write(70, 390, string.upper("Gleich"), 60, CONFIG.foreground_color.rgba())
+                else
+                    CONFIG.font:write(70, 390, string.upper("Jetzt"), 60, CONFIG.foreground_color.rgba())
+                end
+
+                CONFIG.font2:write(70, 490, current_talk_aba.start_str, 50, CONFIG.foreground_color.rgba())
+                if delta > 180*60 then
+                    CONFIG.font2:write(70, 490 + 60, string.format("in %d h", math.floor(delta/3660)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                elseif delta > 0 then
+                    CONFIG.font2:write(70, 490 + 60, string.format("in %d min", math.floor(delta/60)+1), 50, CONFIG.foreground_color.rgb_with_a(0.6))
+                end
+                for idx, line in ipairs(current_talk_aba.slide_lines) do
+                    if idx >= 5 then
+                        break
+                    end
+                    CONFIG.font:write(550, 490 - 60 + 60 * idx, line, 50, CONFIG.foreground_color.rgba())
+                end
+
+                local speakers = wrap(table.concat(current_talk_aba.speakers, ", "), 30)
 
                 for idx, line in ipairs(speakers) do
                     if idx >= 5 then
