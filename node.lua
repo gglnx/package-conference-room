@@ -320,7 +320,7 @@ local content = switcher(function()
                 end                
             end
         end
-    }, , {
+    }, {
         time = CONFIG.current_room,
         prepare = function()
         end;
@@ -363,7 +363,7 @@ local content = switcher(function()
                 end                
             end
         end
-    }, , {
+    }, {
         time = CONFIG.current_room,
         prepare = function()
         end;
